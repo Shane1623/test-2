@@ -1,1 +1,43 @@
+// Ex13_12
+public class Ex13_12 {
+    public static void main(String[] args) {
+        try {
+            double radius = 10.0;
+            double x1 = 5.3;
+            double y1 = 6.8;
+            double x2 = 0.2;
+            double y2 = 9.5;
+
+            double dist = Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2));
+
+            if (dist <= radius) {
+                throw new InException(x1, y1, radius);
+            } else {
+                throw new OutException(x1, y1, radius);
+            }
+        } catch (OutException e) {
+            System.out.println(e.getMessage());
+        } catch (InException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+
+class CenterException extends Exception {
+    public CenterException(double x, double y, double radius) {
+        super("(" + x + "," + y + ")在半徑 " + radius + "，圓心 (" + x + "," + y + ")的圓心上");
+    }
+}
+
+class OutException extends Exception {
+    public OutException(double x, double y, double radius) {
+        super("(" + x + "," + y + ")不在半徑 " + radius + "，圓心 (" + x + "," + y + ")的圓內");
+    }
+}
+
+class InException extends Exception {
+    public InException(double x, double y, double radius) {
+        super("(" + x + "," + y + ")在半徑 " + radius + "，圓心 (" + x + "," + y + ")的圓內");
+    }
+}
 
