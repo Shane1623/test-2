@@ -1,1 +1,53 @@
 
+// Interface for shape
+interface IShape03 {
+    void show();
+    int area();
+}
+
+// Interface for color
+interface IColor {
+    void showColor();
+}
+
+// Class implementing both interfaces
+class CWin03 implements IShape03, IColor {
+    protected int width;
+    protected int height;
+    protected String color;
+
+    public CWin03(int w, int h, String str) {
+        width = w;
+        height = h;
+        color = str;
+    }
+
+    @Override
+
+    public void show() {
+        System.out.println("color=" + color);
+        System.out.println("width=" + width);
+        System.out.println("height=" + height);
+        System.out.println("area=" + area());
+    }
+
+    @Override
+    public int area() {
+        return width * height;
+    }
+
+    @Override
+    public void showColor() {
+        System.out.println("color=" + color);
+    }
+}
+
+// Main class to test the implementation
+public class J2 {
+    public static void main(String[] args) {
+        CWin03 win = new CWin03(5, 7, "Green");
+        win.show();
+    }
+
+}
+
